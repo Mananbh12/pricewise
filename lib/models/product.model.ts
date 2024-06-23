@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import { connectTodb } from "../mongoose";
+
 
 const productSchema = new mongoose.Schema({
   url: {type : String, required:true, unique:true},
@@ -22,6 +24,6 @@ const productSchema = new mongoose.Schema({
   users: [{email: {type: String, required: true}}],
 }, {timestamps: true});
 
-const Product = mongoose.model('Product', productSchema) || mongoose.models.Product;
+const Product = mongoose.models.Product || mongoose.model('Product', productSchema);
 
 export default Product;
